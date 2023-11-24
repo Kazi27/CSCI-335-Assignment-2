@@ -4,13 +4,14 @@
 #include <algorithm>
 #include <chrono>
 #include "HalfSelectionSort.hpp"
+#include "StandardSort.hpp"
 
 int main() 
 {
     // Read input from file into vector
     std::vector<int> nums;
     int num;
-    std::ifstream inputFile("input.txt");
+    std::ifstream inputFile("./input1.txt");
 
     if (inputFile.is_open()) 
     {
@@ -20,7 +21,6 @@ int main()
         }
         inputFile.close();
     } 
-    
     else 
     {
         std::cerr << "Unable to open input file.\n";
@@ -30,11 +30,20 @@ int main()
     int duration;
 
     // Run halfSelectionSort
-    int median = halfSelectionSort(nums, duration);
+    int halfSelectionSortMedian = halfSelectionSort(nums, duration);
 
-    if (median != -1) 
+    if (halfSelectionSortMedian != -1) 
     {
-        std::cout << "Median found by HalfSelectionSort: " << median << "\n";
+        std::cout << "Median found by HalfSelectionSort: " << halfSelectionSortMedian << "\n";
+        std::cout << "Time taken: " << duration << " milliseconds.\n";
+    }
+
+    // Run standardSort
+    int standardSortMedian = standardSort(nums, duration);
+
+    if (standardSortMedian != -1) 
+    {
+        std::cout << "Median found by StandardSort: " << standardSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
 

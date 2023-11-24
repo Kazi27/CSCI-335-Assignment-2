@@ -1,6 +1,6 @@
 #include "StandardSort.hpp"
 
-int standardSort (std::vector<int>& nums, int& duration)
+int standardSort(std::vector<int>& nums, int& duration)
 {
     //clock
     auto start = std::chrono::high_resolution_clock::now();

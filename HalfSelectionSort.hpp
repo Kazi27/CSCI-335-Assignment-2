@@ -1,5 +1,5 @@
-#ifndef HAND_HPP
-#define HAND_HPP //hpp stuff
+#ifndef HALFSELECTIONSORT_HPP
+#define HALFSELECTIONSORT_HPP //hpp stuff
 
 #include <iostream> //guards
 #include <vector>

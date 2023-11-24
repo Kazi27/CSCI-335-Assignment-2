@@ -37,5 +37,5 @@ int halfSelectionSort(std::vector<int>& nums, int& duration)
     }
     std::cout << "\n";
 
-    return nums[limit - 1]; // Return the lesser of the 2 middle elements
+    return (nums[limit - 1] + nums[limit]) / 2; // Return the lesser of the 2 middle elements
 }

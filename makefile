@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall -O2
 
 PROG ?= main
-OBJS = main.cpp HalfSelectionSort.cpp StandardSort.cpp
+OBJS = main.cpp HalfSelectionSort.cpp StandardSort.cpp MergeSort.cpp
 
 all: $(PROG)
 

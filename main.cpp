@@ -5,6 +5,7 @@
 #include <chrono>
 #include "HalfSelectionSort.hpp"
 #include "StandardSort.hpp"
+#include "MergeSort.hpp"
 
 int main() 
 {
@@ -44,6 +45,15 @@ int main()
     if (standardSortMedian != -1) 
     {
         std::cout << "Median found by StandardSort: " << standardSortMedian << "\n";
+        std::cout << "Time taken: " << duration << " milliseconds.\n";
+    }
+
+    // Run mergeSort
+    int mergeSortMedian = mergeSort(nums, duration);
+
+    if (mergeSortMedian != -1) 
+    {
+        std::cout << "Median found by MergeSort: " << mergeSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
 

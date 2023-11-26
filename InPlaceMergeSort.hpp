@@ -8,5 +8,7 @@
 #include <fstream>
 
 int inPlaceMergeSort (std::vector<int>& nums, int& duration);
+void merge(std::vector<int>& nums, size_t left, size_t mid, size_t right);
+void mergeSortRec(std::vector<int>& nums, size_t left, size_t right);
 
 #endif

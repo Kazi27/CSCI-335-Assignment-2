@@ -6,6 +6,7 @@
 #include "HalfSelectionSort.hpp"
 #include "StandardSort.hpp"
 #include "MergeSort.hpp"
+#include "InPlaceMergeSort.hpp"
 
 int main() 
 {
@@ -54,6 +55,15 @@ int main()
     if (mergeSortMedian != -1) 
     {
         std::cout << "Median found by MergeSort: " << mergeSortMedian << "\n";
+        std::cout << "Time taken: " << duration << " milliseconds.\n";
+    }
+
+     // Run inPlaceMergeSort
+    int inPlaceMergeSortMedian = inPlaceMergeSort(nums, duration);
+
+    if (inPlaceMergeSortMedian != -1) 
+    {
+        std::cout << "Median found by InPlaceMergeSort: " << inPlaceMergeSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
 

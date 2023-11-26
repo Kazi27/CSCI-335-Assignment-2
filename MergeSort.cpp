@@ -1,6 +1,5 @@
 #include "MergeSort.hpp"
 
-
 void printVector(const std::vector<int>& nums) 
 {
     for (const auto& num : nums) 

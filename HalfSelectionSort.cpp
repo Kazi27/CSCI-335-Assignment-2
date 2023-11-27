@@ -1,41 +1,47 @@
 #include "HalfSelectionSort.hpp"
 
-int halfSelectionSort(std::vector<int>& nums, int& duration) 
+int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
 {
-    auto start_time = std::chrono::high_resolution_clock::now();
+    auto start_time = std::chrono::high_resolution_clock::now(); //start time of algo
 
-    const int size = nums.size();
-    const int limit = size / 2;
+    const int size = nums.size(); //size of input vector
 
-    if (size > 50000) 
+    const int limit = size / 2; //caalc limit (half of vector size)
+
+    if (size > 50000) //if the input size is too large for the algo
     {
         std::cout << "Input too big for HalfSelectionSort (>50,000 elements).\n";
-        duration = -1; // Indicate failure due to large input size
+        duration = -1; //-1 as duration cause ur a failure due to large input size lmao
         return -1;
     }
 
-    for (int i = 0; i < limit; ++i) 
+    for (int i = 0; i < limit; ++i) //iteratre thru vector to find the ith smallest element & move it to the ith pos like find first smallest, put it first spot
     {
-        int min_index = i;
-        for (int j = i + 1; j < size; ++j) 
+        int min_index = i; //initialize index of the min element to curr iteration index i
+
+        for (int j = i + 1; j < size; ++j) //iterate thru unsorted portion to find the minimum element remember i is till midpoint, j is from midpoint till end
         {
-            if (nums[j] < nums[min_index]) 
+            if (nums[j] < nums[min_index]) //if ur current element is smaller than element at min_index, 
             {
-                min_index = j;
+                min_index = j; //thats ur new min
             }
         }
-        std::swap(nums[i], nums[min_index]);
+
+        std::swap(nums[i], nums[min_index]); //swap curr element w/ the min element from unsorted portion
     }
 
-    auto end_time = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+    auto end_time = std::chrono::high_resolution_clock::now(); //end time of algo
 
-    // Print the vector (for testing purposes, remove in final version)
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
+
+    //print sorted vector but remove in the final
     std::cout << "Sorted vector by HalfSelectionSort: ";
-    for (const auto& num : nums) {
+    for (const auto& num : nums) 
+    {
         std::cout << num << " ";
     }
     std::cout << "\n";
 
-    return (nums[limit - 1] + nums[limit]) / 2; // Return the lesser of the 2 middle elements
+    //return the median, specs say its the lesser of the two middle elements
+    return (nums[limit - 1] + nums[limit]) / 2;
 }

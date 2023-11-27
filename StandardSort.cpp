@@ -1,20 +1,16 @@
 #include "StandardSort.hpp"
 
-int standardSort(std::vector<int>& nums, int& duration)
+int standardSort(std::vector<int>& nums, int& duration) //func declr as per usual, prolly no need for commenting in future files
 {
-    //clock
-    auto start = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now(); //start time of algo like before too
 
-    //std::sort to sort the vector
-    std::sort(nums.begin(), nums.end());
+    std::sort(nums.begin(), nums.end()); //std::sort sorts vector in ascending order lmao
 
-    //end clock
-    auto stop = std::chrono::high_resolution_clock::now();
+    auto stop = std::chrono::high_resolution_clock::now(); //end time of algo
 
-    //calc duration
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count(); //duration of the algo
 
-    //prlly dont inclde this in the final version but this prints out sorted vector
+    //dont include this in the final version, but print sorted vector for testing
     std::cout << "Sorted vector: ";
     for (int num : nums) 
     {
@@ -22,9 +18,10 @@ int standardSort(std::vector<int>& nums, int& duration)
     }
     std::cout << "\n";
 
-    // clculate the median
+    //calc median of sorted vect, specs say its the lesser of the two middle elements
     int size = nums.size();
     int median = (nums[size / 2 - 1] + nums[size / 2]) / 2;
 
+    // Return the calculated median
     return median;
 }

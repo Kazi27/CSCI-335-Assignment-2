@@ -1,50 +1,45 @@
 #include "InPlaceMergeSort.hpp"
 
-void mergeSortRec(std::vector<int>& nums, size_t left, size_t right) 
+void mergeSortRec(std::vector<int>& nums, size_t left, size_t right) //recursive helper
 {
     if (left < right) 
     {
-        // Same as standard merge sort
-        size_t mid = left + (right - left) / 2;
+        size_t mid = left + (right - left) / 2; //middle index
 
-        // Recursive calls
-        mergeSortRec(nums, left, mid);
-        mergeSortRec(nums, mid + 1, right);
+        mergeSortRec(nums, left, mid); //recursively sort left and right halves, left to mid and then mid+1 to right. 
+        mergeSortRec(nums, mid + 1, right); //split and call mergesort again and again till array size 1 i believe
 
-        // Merge the two halves in-place
-        merge(nums, left, mid, right);
+        merge(nums, left, mid, right); //merge the two halves in-place
     }
 }
 
 void merge(std::vector<int>& nums, size_t left, size_t mid, size_t right) 
 {
-    // Create temporary vectors to hold the two halves
-    std::vector<int> leftHalf(nums.begin() + left, nums.begin() + mid + 1);
-    std::vector<int> rightHalf(nums.begin() + mid + 1, nums.begin() + right + 1);
+    std::vector<int> leftHalf(nums.begin() + left, nums.begin() + mid + 1); //temp vect to hold the left half
+    std::vector<int> rightHalf(nums.begin() + mid + 1, nums.begin() + right + 1); //temp vect to hold the right half
 
-    // Merge the two halves in-place
-    std::vector<int>::iterator leftIter = leftHalf.begin();
-    std::vector<int>::iterator rightIter = rightHalf.begin();
+    std::vector<int>::iterator leftIter = leftHalf.begin(); //initialize iterators
+    std::vector<int>::iterator rightIter = rightHalf.begin(); 
     std::vector<int>::iterator numsIter = nums.begin() + left;
 
-    while (leftIter != leftHalf.end() && rightIter != rightHalf.end()) 
+    while (leftIter != leftHalf.end() && rightIter != rightHalf.end()) //as long as you're not at the end yet for either iterator,
     {
-        if (*leftIter <= *rightIter) 
+        if (*leftIter <= *rightIter) //if ur current element in the left half is <= to curr element in the right half
         {
-            *numsIter = *leftIter;
-            ++leftIter;
+            *numsIter = *leftIter; //copy element from left half to the original vector
+            ++leftIter; //then move to the next element in the left half
         } 
-        else 
+
+        else //this means the right iter >= left iter so
         {
-            *numsIter = *rightIter;
-            ++rightIter;
+            *numsIter = *rightIter; //first copy element from right half to the OG vector
+            ++rightIter; //now move to the next element in the right half
         }
 
-        ++numsIter;
+        ++numsIter; //when ur here just move to the next position in the OG vector
     }
 
-    // Copy the remaining elements of leftHalf and rightHalf if any
-    std::copy(leftIter, leftHalf.end(), numsIter);
+    std::copy(leftIter, leftHalf.end(), numsIter); //copy remainin elements of each half if any
     std::copy(rightIter, rightHalf.end(), numsIter);
 }
 

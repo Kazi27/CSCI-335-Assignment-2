@@ -13,8 +13,8 @@ int main()
     // Read input from file into vector
     std::vector<int> nums;
     int num;
-    //std::ifstream inputFile("./input1.txt");
-    std::ifstream inputFile("./input10.txt");
+    std::ifstream inputFile("./input1.txt");
+    //std::ifstream inputFile("./input10.txt");
 
     if (inputFile.is_open()) 
     {

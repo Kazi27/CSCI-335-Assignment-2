@@ -42,6 +42,17 @@ int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
     }
     std::cout << "\n";
 
-    //return the median, specs say its the lesser of the two middle elements
-    return (nums[limit - 1] + nums[limit]) / 2;
+    //return the median, specs say its the lesser of the two middle elements IF ITS EVEN, if odd just return the middle one
+    int size1 = nums.size(); //using size1 here because used size before
+    if (size1 % 2 == 0) //for even-sized vectors
+    {
+        //return the lesser of the middle elements
+        return std::min(nums[size1 / 2 - 1], nums[size1 / 2]);
+    } 
+
+    else 
+    {
+        //for odd-sized vectors, return middle element
+        return nums[size1 / 2];
+    }
 }

@@ -10,23 +10,23 @@
 
 int main() 
 {
-    // Read input from file into vector
-    std::vector<int> nums;
+    std::vector<int> nums; //read input from file into vector
     int num;
-    std::ifstream inputFile("./input1.txt");
-    //std::ifstream inputFile("./input10.txt");
+    std::ifstream inputFile("./input1.txt"); //given inputs
+    //std::ifstream inputFile("./input10.txt"); //own input
 
-    if (inputFile.is_open()) 
+    if (inputFile.is_open()) //if the files open
     {
-        while (inputFile >> num) 
+        while (inputFile >> num) //reads integers one by one
         {
-            nums.push_back(num);
+            nums.push_back(num); //push each integer into the vector one by one
         }
-        inputFile.close();
+        inputFile.close(); //close the file after u finish reading
     } 
-    else 
+    
+    else //files closed so
     {
-        std::cerr << "Unable to open input file.\n";
+        std::cerr << "Unable to open input file.\n"; //no bueno
         return 1;
     }
 

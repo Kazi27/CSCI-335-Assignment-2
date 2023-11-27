@@ -10,7 +10,18 @@ int inPlaceMergeSort(std::vector<int>& nums, int& duration)
     auto end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
-    return nums[nums.size() / 2];
+    // Find and return the median
+    int size = nums.size();
+    if (size % 2 == 0) 
+    {
+        // For even-sized vectors, return the lesser of the middle elements
+        return std::min(nums[size / 2 - 1], nums[size / 2]);
+    } 
+    else 
+    {
+        // For odd-sized vectors, return the middle element
+        return nums[size / 2];
+    }
 }
 
 void mergeSortRec(std::vector<int>& nums, size_t left, size_t right) 

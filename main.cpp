@@ -8,12 +8,14 @@
 #include "MergeSort.hpp"
 #include "InPlaceMergeSort.hpp"
 #include "HalfHeapSort.hpp"
+#include "QuickSelect.hpp"
 
 int main() 
 {
     std::vector<int> nums; //read input from file into vector
     int num;
-    std::ifstream inputFile("./input1.txt"); //given inputs
+    //std::ifstream inputFile("./input1.txt"); //given inputs
+    std::ifstream inputFile("./input4.txt");
     //std::ifstream inputFile("./input10.txt"); //own input
 
     if (inputFile.is_open()) //if the files open
@@ -75,6 +77,15 @@ int main()
     if (halfHeapSortMedian != -1)
     {
         std::cout << "Median found by HalfHeapSort: " << halfHeapSortMedian << "\n";
+        std::cout << "Time taken: " << duration << " milliseconds.\n";
+    }
+
+    // Run quickSelect
+    int quickSelectMedian = quickSelect(nums, duration);
+
+    if (quickSelectMedian != -1)
+    {
+        std::cout << "Median found by quickSelect: " << halfHeapSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
 

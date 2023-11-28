@@ -1,5 +1,8 @@
 #include "HalfHeapSort.hpp"
 
+// parameter "hole" is the index of the hole.
+// percDown precondition: value to be inserted into hole is stored in heap at index 0. The hole itself may be in an unspecified state - i.e. it doesn't matter what's in it since you'll be overwriting it anyway.
+// percDown postcondition: hole has been moved into correct place and value has been inserted into hole.
 void percDown(std::vector<int>& heap, int hole, int size) 
 {
     int temp = heap[hole];
@@ -27,9 +30,6 @@ void percDown(std::vector<int>& heap, int hole, int size)
     heap[hole] = temp;
 }
 
-// parameter "hole" is the index of the hole.
-// percDown precondition: value to be inserted into hole is stored in heap at index 0. The hole itself may be in an unspecified state - i.e. it doesn't matter what's in it since you'll be overwriting it anyway.
-// percDown postcondition: hole has been moved into correct place and value has been inserted into hole.
 void buildHeap(std::vector<int>& heap) 
 {
     int size = heap.size();
@@ -69,7 +69,7 @@ int halfHeapSort(std::vector<int>& nums, int& duration) //func delcr
     }
     std::cout << "\n";
 
-    return nums[0];
+    return nums[0]; //return median
 
     //find & return median of the sorted vector
     //return nums[1]; //if u make this 0, u get the correct thing but like he wants it to start at 1

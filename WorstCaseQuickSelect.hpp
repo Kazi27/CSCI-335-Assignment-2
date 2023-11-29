@@ -1,5 +1,5 @@
-#ifndef QUICKSELECT_HPP
-#define QUICKSELECT_HPP //hpp stuff
+#ifndef WORSTQUICKSELECT_HPP
+#define WORSTQUICKSELECT_HPP //hpp stuff
 
 #include <iostream> //guards
 #include <vector>

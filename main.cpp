@@ -9,6 +9,8 @@
 #include "InPlaceMergeSort.hpp"
 #include "HalfHeapSort.hpp"
 #include "QuickSelect.hpp"
+#include "WorstCaseQuickSelect.hpp"
+#include "MedianOfMediansMethod.hpp"
 
 int main() 
 {
@@ -88,6 +90,10 @@ int main()
         std::cout << "Median found by quickSelect: " << halfHeapSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
+
+    //idk what u test for worst case quick select
+
+    //idk what u test for median of medians method so idk
 
     return 0;
 }

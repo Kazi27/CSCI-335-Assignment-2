@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #include "QuickSelect.hpp"
 
 std::vector<int>::iterator choosePivot(std::vector<int>& nums,std::vector<int>::iterator low, std::vector<int>::iterator high)

@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #ifndef STANDARDSORT_HPP
 #define STANDARDSORT_HPP //hpp stuff
 

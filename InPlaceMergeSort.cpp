@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #include "InPlaceMergeSort.hpp"
 
 void mergeSortRec(std::vector<int>& nums, size_t left, size_t right) //recursive helper

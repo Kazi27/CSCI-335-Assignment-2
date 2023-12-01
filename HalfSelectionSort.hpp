@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #ifndef HALFSELECTIONSORT_HPP
 #define HALFSELECTIONSORT_HPP //hpp stuff
 

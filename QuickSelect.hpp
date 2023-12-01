@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #ifndef QUICKSELECT_HPP
 #define QUICKSELECT_HPP //hpp stuff
 

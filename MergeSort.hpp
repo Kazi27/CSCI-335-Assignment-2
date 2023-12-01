@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #ifndef MERGESORT_HPP
 #define MERGESORT_HPP //hpp stuff
 

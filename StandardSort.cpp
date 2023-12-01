@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #include "StandardSort.hpp"
 
 int standardSort(std::vector<int>& nums, int& duration) //func declr as per usual, prolly no need for commenting in future files

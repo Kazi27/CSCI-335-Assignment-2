@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #include "WorstCaseQuickSelect.hpp"
 
 std::vector<int> worstCaseQuickSelect() 

@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #ifndef MEDIANOFMEDIAN_HPP
 #define MEDIANOFMEDIAN_HPP //hpp stuff
 

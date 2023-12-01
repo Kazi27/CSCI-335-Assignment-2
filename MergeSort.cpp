@@ -1,3 +1,6 @@
+//Name: Kazi Sameen Anwar
+//CSCI - 335 Assignment 2
+
 #include "MergeSort.hpp"
 
 void mergeSortHelper(std::vector<int>& nums, int left, int right) //recursive helpa func for merge sort

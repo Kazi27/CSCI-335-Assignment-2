@@ -98,5 +98,17 @@ int quickSelect (std::vector<int>& nums, int& duration) //func declr
     }
     std::cout << "\n";
 
-    return 1;
+    //find & return median of the sorted vector
+    int size = nums.size();
+    if (size % 2 == 0) //for even-sized vectors
+    {
+        //return the lesser of the middle elements
+        return std::min(nums[size / 2 - 1], nums[size / 2]);
+    } 
+
+    else 
+    {
+        //for odd-sized vectors, return middle element
+        return nums[size / 2];
+    }
 }

@@ -3,6 +3,8 @@
 #include <vector>
 #include <algorithm>
 #include <chrono>
+#include <iterator> //for shuffle in worst case
+#include <random> //for shuffle in worst case
 #include "HalfSelectionSort.hpp"
 #include "StandardSort.hpp"
 #include "MergeSort.hpp"
@@ -18,6 +20,7 @@ int main()
     int num;
     std::ifstream inputFile("./input1.txt"); //given inputs
     //std::ifstream inputFile("./input4.txt");
+    //std::ifstream inputFile("./input6.txt");
     //std::ifstream inputFile("./input10.txt"); //own input
 
     if (inputFile.is_open()) //if the files open
@@ -87,11 +90,23 @@ int main()
 
     if (quickSelectMedian != -1)
     {
-        std::cout << "Median found by quickSelect: " << halfHeapSortMedian << "\n";
+        std::cout << "Median found by quickSelect: " << quickSelectMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
 
-    //idk what u test for worst case quick select
+    // Run quickSelect on worst-case input
+    std::vector<int> worstCaseInput = worstCaseQuickSelect();
+    std::cout << "Original vector: ";
+    for (const auto& num : worstCaseInput) {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
+    int quickSelectWorstCaseMedian = quickSelect(worstCaseInput, duration);
+
+    if (quickSelectWorstCaseMedian != -1) {
+        std::cout << "Median found by quickSelect on worst-case input: " << quickSelectWorstCaseMedian << "\n";
+        std::cout << "Time taken: " << duration << " milliseconds.\n";
+    }
 
     //idk what u test for median of medians method so idk
 

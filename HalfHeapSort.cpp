@@ -52,9 +52,12 @@ int halfHeapSort(std::vector<int>& nums, int& duration) //func delcr
 
     buildHeap(nums);
 
-    int size = nums.size();
-    // Removing elements until half of the original size
-    while (size > (nums.size() / 2)) {
+    int size = nums.size(); //uncomment this to make proff input work
+    //int size = (nums.size() - 1) / 2; //exclude first element at index 0 //uncomment this to make small inpiut work
+    
+    while (size > (nums.size() /2)) { //removing elements until half of the original size //uncomment to make proff input work
+    //while (size > 0) { //uncomment this to make small input work
+    //while(size > (nums.size() /2) || size > 1) { //combining both, didnt work
         std::swap(nums[0], nums[size - 1]);
         size--;
         percDown(nums, 0, size);

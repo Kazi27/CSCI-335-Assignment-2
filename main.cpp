@@ -21,10 +21,10 @@ int main()
 {
     std::vector<int> nums; //read input from file into vector
     int num;
-    std::ifstream inputFile("./input1.txt"); //given inputs
+    //std::ifstream inputFile("./input1.txt"); //given inputs
     //std::ifstream inputFile("./input4.txt");
     //std::ifstream inputFile("./input6.txt");
-    //std::ifstream inputFile("./input10.txt"); //own input
+    std::ifstream inputFile("./input10.txt"); //own input
 
     if (inputFile.is_open()) //if the files open
     {
@@ -42,6 +42,14 @@ int main()
     }
 
     int duration;
+
+    // Original Vector
+    std::cout << "The original vector to be sorted is ";
+    for (int num : nums) 
+    {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
 
     // Run halfSelectionSort
     int halfSelectionSortMedian = halfSelectionSort(nums, duration);
@@ -99,7 +107,7 @@ int main()
 
     // Run quickSelect on worst-case input
     std::vector<int> worstCaseInput = worstCaseQuickSelect();
-    std::cout << "Original vector: ";
+    std::cout << "Original randomized worst case vector: ";
     for (const auto& num : worstCaseInput) {
         std::cout << num << " ";
     }
@@ -111,7 +119,14 @@ int main()
         std::cout << "Time taken: " << duration << " milliseconds.\n";
     }
 
-    //idk what u test for median of medians method so idk
+    // Run medianOfMediansMethod
+    //std::vector<int> medianOfMediansInput = nums; // Copy the original vector for testing
+    int medianOfMediansResult = medianOfMediansMethod(nums, duration);
+
+    if (medianOfMediansResult != -1) {
+        std::cout << "Median found by Median of Medians: " << medianOfMediansResult << "\n";
+        std::cout << "Time taken: " << duration << " milliseconds.\n";
+    }
 
     return 0;
 }

@@ -1,55 +1,68 @@
-//Name: Kazi Sameen Anwar
-//CSCI - 335 Assignment 2
-
 #include "MedianOfMediansMethod.hpp"
 #include "QuickSelect.hpp"
 
-int medianOfFive(std::vector<int>::iterator a, std::vector<int>::iterator b, std::vector<int>::iterator c, std::vector<int>::iterator d, std::vector<int>::iterator e) 
-{ 
-    int arr[] = { *a, *b, *c, *d, *e }; 
-    std::sort(arr, arr + 5);
-    return arr[2]; // Median of the sorted array 
+// Function to find the median of a small array (size <= 5)
+int medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high) {
+    std::sort(low, high);
+    return *(low + (high - low) / 2);
 }
 
-int medianOfMediansMethod(std::vector<int>& nums, int& duration)
-{
-    auto start = std::chrono::high_resolution_clock::now(); //start time of algo
+// Function to find the median of medians
+int medianOfMedians(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high) {
+    int groupSize = 5;
+    int size = high - low + 1;
+    int numGroups = size / groupSize;
 
-    int result = medianOfMedians(nums, nums.begin(), nums.end());
+    // Create a vector to store the medians of groups
+    std::vector<int> medians;
 
-    auto end = std::chrono::high_resolution_clock::now(); //yea we know
+    // Find the median of each group
+    for (int i = 0; i < numGroups; ++i) {
+        auto groupLow = low + i * groupSize;
+        auto groupHigh = groupLow + groupSize - 1;
+        int median = medianOfFive(groupLow, groupHigh);
+        medians.push_back(median);
+    }
 
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
+    // If there are leftover elements, find the median of those
+    if (size % groupSize > 0) {
+        auto groupLow = low + numGroups * groupSize;
+        auto groupHigh = low + size - 1;
+        int median = medianOfFive(groupLow, groupHigh);
+        medians.push_back(median);
+    }
 
-    return result;
+    // Recursively find the median of medians
+    if (medians.size() > 1) {
+        return medianOfMedians(medians, medians.begin(), medians.end());
+    } else {
+        return medians[0];
+    }
 }
 
-int medianOfMedians(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high)
-{
-    std::vector<int> medians; 
-    while (low < high) 
-    { 
-        std::vector<int>::iterator groupHigh = low + 5; 
-        if (groupHigh > high) 
-        { 
-            groupHigh = high; 
-        } 
-        
-        if (groupHigh - low <= 24) 
-        { 
-            // Base case: Use std::sort for small subarrays 
-            std::sort(low, groupHigh); 
-            medians.push_back(*(low + (groupHigh - low) / 2)); 
-        } 
-        
-        else 
-        { 
-            // Continue with recursive call 
-            int median = medianOfFive(low, low + 1, low + 2, low + 3, low + 4); 
-            medians.push_back(median); 
-        } 
-        
-        low += 5; 
-    } 
-    //return quickSelect(medians, medians.size() / 2); 
+// Median of Medians method
+int medianOfMediansMethod(std::vector<int>& nums, int& duration) {
+    auto start = std::chrono::high_resolution_clock::now();
+
+    recursiveQuickSelect(nums, nums.begin(), nums.end());
+
+    auto end = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
+    // Print the sorted vector (for testing purposes, remove in the final version)
+    std::cout << "Sorted vector by Median of Medians: ";
+    for (int num : nums) {
+        std::cout << num << " ";
+    }
+    std::cout << "\n";
+
+    // Find and return the median of the sorted vector
+    int size = nums.size();
+    if (size % 2 == 0) {
+        // Return the lesser of the middle elements
+        return std::min(nums[size / 2 - 1], nums[size / 2]);
+    } else {
+        // For odd-sized vectors, return the middle element
+        return nums[size / 2];
+    }
 }

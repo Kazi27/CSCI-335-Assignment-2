@@ -38,7 +38,7 @@ std::vector<int>::iterator choosePivot(std::vector<int>& nums,std::vector<int>::
     }
 }
 
-std::vector<int>::iterator hoarePartition ( std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high )
+std::vector<int>::iterator hoarePartition(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high)
 {
     std::vector<int>::iterator pivot = choosePivot(nums, low, high); 
     std::swap(*pivot, *(high - 1)); 
@@ -83,7 +83,7 @@ void recursiveQuickSelect(std::vector<int>& nums, std::vector<int>::iterator low
     std::sort(low, high); 
 }
 
-int quickSelect (std::vector<int>& nums, int& duration) //func declr
+int quickSelect(std::vector<int>& nums, int& duration) //func declr
 {
     auto start = std::chrono::high_resolution_clock::now(); //start time of algo
 

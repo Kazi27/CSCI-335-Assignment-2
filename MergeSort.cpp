@@ -31,12 +31,12 @@ int mergeSort(std::vector<int>& nums, int& duration) //this is the main merge so
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
 
     //print the sorted vector (for testing purposes, remove in the final version)
-    std::cout << "Sorted vector by MergeSort: ";
-    for (int num : nums) 
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "Sorted vector by MergeSort: ";
+    // for (int num : nums) 
+    // {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
 
     //find & return median of the sorted vector
     int size = nums.size();

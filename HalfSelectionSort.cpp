@@ -38,12 +38,12 @@ int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
 
     //print sorted vector but remove in the final
-    std::cout << "Sorted vector by HalfSelectionSort: ";
-    for (const auto& num : nums) 
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "Sorted vector by HalfSelectionSort: ";
+    // for (const auto& num : nums) 
+    // {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
 
     //return the median, specs say its the lesser of the two middle elements IF ITS EVEN, if odd just return the middle one
     int size1 = nums.size(); //using size1 here because used size before

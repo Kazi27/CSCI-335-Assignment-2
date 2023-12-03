@@ -68,12 +68,12 @@ int halfHeapSort(std::vector<int>& nums, int& duration) //func delcr
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
 
     //print the sorted vector (for testing purposes, remove in the final version)
-    std::cout << "Sorted vector by HalfHeapSort: ";
-    for (int num : nums) 
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "Sorted vector by HalfHeapSort: ";
+    // for (int num : nums) 
+    // {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
 
     return nums[0]; //return median
 

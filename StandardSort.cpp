@@ -14,12 +14,12 @@ int standardSort(std::vector<int>& nums, int& duration) //func declr as per usua
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count(); //duration of the algo
 
     //dont include this in the final version, but print sorted vector for testing
-    std::cout << "Sorted vector by StandardSort: ";
-    for (int num : nums) 
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "Sorted vector by StandardSort: ";
+    // for (int num : nums) 
+    // {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
 
     //calc median of sorted vect, specs say its the lesser of the two middle elements IF EVEN, if odd size just the middle
     int size = nums.size();

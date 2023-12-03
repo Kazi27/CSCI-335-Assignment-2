@@ -50,11 +50,11 @@ int medianOfMediansMethod(std::vector<int>& nums, int& duration) {
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     // Print the sorted vector (for testing purposes, remove in the final version)
-    std::cout << "Sorted vector by Median of Medians: ";
-    for (int num : nums) {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "Sorted vector by Median of Medians: ";
+    // for (int num : nums) {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
 
     // Find and return the median of the sorted vector
     int size = nums.size();

@@ -21,10 +21,20 @@ int main()
 {
     std::vector<int> nums; //read input from file into vector
     int num;
-    //std::ifstream inputFile("./input1.txt"); //given inputs
-    //std::ifstream inputFile("./input4.txt");
-    //std::ifstream inputFile("./input6.txt");
-    std::ifstream inputFile("./input10.txt"); //own input
+    
+    //given inputs
+    //std::ifstream inputFile("./input1.txt"); //50492874 all sorts work
+    //std::ifstream inputFile("./input2.txt"); //19250688 all sorts work
+    //std::ifstream inputFile("./input3.txt"); //70244369 all sorts work
+    //std::ifstream inputFile("./input4.txt"); //50173306 but halfselect returns 83399603
+    //std::ifstream inputFile("./input5.txt"); //18637175 but halfselect returns 35469324 and halfheap returns 18635760
+    //std::ifstream inputFile("./input6.txt"); //70984972 but halfselect returns 99445844 and halfheap returns 70982184
+    //std::ifstream inputFile("./input7.txt"); //input too big for half select, 49971079, quickselect and median of median takes too long?
+    //std::ifstream inputFile("./input8.txt"); //input too big for half select, 18675104, quickselect and median of median takes too long?
+    //std::ifstream inputFile("./input9.txt"); //input too big for half select, 70722421, quickselect and median of median takes too long?
+
+    //own input
+    std::ifstream inputFile("./input10.txt"); 
 
     if (inputFile.is_open()) //if the files open
     {
@@ -44,12 +54,14 @@ int main()
     int duration;
 
     // Original Vector
-    std::cout << "The original vector to be sorted is ";
-    for (int num : nums) 
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "The original vector to be sorted is ";
+    // for (int num : nums) 
+    // {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
+    // std::cout << "\n";
+    // std::cout << "\n";
 
     // Run halfSelectionSort
     int halfSelectionSortMedian = halfSelectionSort(nums, duration);
@@ -58,6 +70,8 @@ int main()
     {
         std::cout << "Median found by HalfSelectionSort: " << halfSelectionSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     // Run standardSort
@@ -67,6 +81,8 @@ int main()
     {
         std::cout << "Median found by StandardSort: " << standardSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     // Run mergeSort
@@ -76,6 +92,8 @@ int main()
     {
         std::cout << "Median found by MergeSort: " << mergeSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
      // Run inPlaceMergeSort
@@ -85,6 +103,8 @@ int main()
     {
         std::cout << "Median found by InPlaceMergeSort: " << inPlaceMergeSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     // Run halfHeapSort
@@ -94,6 +114,8 @@ int main()
     {
         std::cout << "Median found by HalfHeapSort: " << halfHeapSortMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     // Run quickSelect
@@ -103,6 +125,8 @@ int main()
     {
         std::cout << "Median found by quickSelect: " << quickSelectMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     // Run quickSelect on worst-case input
@@ -112,11 +136,15 @@ int main()
         std::cout << num << " ";
     }
     std::cout << "\n";
+    std::cout << "\n";
+    std::cout << "\n";
     int quickSelectWorstCaseMedian = quickSelect(worstCaseInput, duration);
 
     if (quickSelectWorstCaseMedian != -1) {
         std::cout << "Median found by quickSelect on worst-case input: " << quickSelectWorstCaseMedian << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     // Run medianOfMediansMethod
@@ -126,6 +154,8 @@ int main()
     if (medianOfMediansResult != -1) {
         std::cout << "Median found by Median of Medians: " << medianOfMediansResult << "\n";
         std::cout << "Time taken: " << duration << " milliseconds.\n";
+        std::cout << "\n";
+        std::cout << "\n";
     }
 
     return 0;

@@ -56,12 +56,12 @@ int inPlaceMergeSort(std::vector<int>& nums, int& duration) //entry point
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //calc duration
 
     //print sorted vector but remove in the final
-    std::cout << "Sorted vector by InPlaceMergeSort: ";
-    for (const auto& num : nums) 
-    {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
+    // std::cout << "Sorted vector by InPlaceMergeSort: ";
+    // for (const auto& num : nums) 
+    // {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
 
     //return the median, specs say its the lesser of the two middle elements IF ITS EVEN, if odd just return the middle one
     int size1 = nums.size(); //using size1 here because used size before

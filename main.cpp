@@ -22,7 +22,7 @@ int main()
     std::vector<int> nums; //read input from file into vector
     int num;
     
-    //given inputs
+    //given inputs (input 1,2 and 3 size is 1000, input 4, 5 and 6 size is 31623, input 7, 8 and 7 size is 1000000)
     //std::ifstream inputFile("./input1.txt"); //50492874 all sorts work
     //std::ifstream inputFile("./input2.txt"); //19250688 all sorts work
     //std::ifstream inputFile("./input3.txt"); //70244369 all sorts work
@@ -62,6 +62,8 @@ int main()
     // std::cout << "\n";
     // std::cout << "\n";
     // std::cout << "\n";
+
+    std::cout << "Number of elements in the vector: " << nums.size() << "\n";
 
     // Run halfSelectionSort
     int halfSelectionSortMedian = halfSelectionSort(nums, duration);

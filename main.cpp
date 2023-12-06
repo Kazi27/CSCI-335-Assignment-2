@@ -26,15 +26,15 @@ int main()
     //std::ifstream inputFile("./input1.txt"); //50492874 all sorts work
     //std::ifstream inputFile("./input2.txt"); //19250688 all sorts work
     //std::ifstream inputFile("./input3.txt"); //70244369 all sorts work
-    //std::ifstream inputFile("./input4.txt"); //50173306 but halfselect returns 83399603
-    //std::ifstream inputFile("./input5.txt"); //18637175 but halfselect returns 35469324 and halfheap returns 18635760
-    //std::ifstream inputFile("./input6.txt"); //70984972 but halfselect returns 99445844 and halfheap returns 70982184
+    std::ifstream inputFile("./input4.txt"); //50173306 but halfselect returns 83399603
+    //std::ifstream inputFile("./input5.txt"); //18637175 but halfselect returns 35469324 
+    //std::ifstream inputFile("./input6.txt"); //70984972 but halfselect returns 99445844 
     //std::ifstream inputFile("./input7.txt"); //input too big for half select, 49971079, quickselect and median of median takes too long?
     //std::ifstream inputFile("./input8.txt"); //input too big for half select, 18675104, quickselect and median of median takes too long?
     //std::ifstream inputFile("./input9.txt"); //input too big for half select, 70722421, quickselect and median of median takes too long?
 
     //own input
-    std::ifstream inputFile("./input10.txt"); 
+    //std::ifstream inputFile("./input10.txt"); 
 
     if (inputFile.is_open()) //if the files open
     {
@@ -88,26 +88,26 @@ int main()
     }
 
     // Run mergeSort
-    int mergeSortMedian = mergeSort(nums, duration);
+    // int mergeSortMedian = mergeSort(nums, duration);
 
-    if (mergeSortMedian != -1) 
-    {
-        std::cout << "Median found by MergeSort: " << mergeSortMedian << "\n";
-        std::cout << "Time taken: " << duration << " milliseconds.\n";
-        std::cout << "\n";
-        std::cout << "\n";
-    }
+    // if (mergeSortMedian != -1) 
+    // {
+    //     std::cout << "Median found by MergeSort: " << mergeSortMedian << "\n";
+    //     std::cout << "Time taken: " << duration << " milliseconds.\n";
+    //     std::cout << "\n";
+    //     std::cout << "\n";
+    // }
 
      // Run inPlaceMergeSort
-    int inPlaceMergeSortMedian = inPlaceMergeSort(nums, duration);
+    // int inPlaceMergeSortMedian = inPlaceMergeSort(nums, duration);
 
-    if (inPlaceMergeSortMedian != -1) 
-    {
-        std::cout << "Median found by InPlaceMergeSort: " << inPlaceMergeSortMedian << "\n";
-        std::cout << "Time taken: " << duration << " milliseconds.\n";
-        std::cout << "\n";
-        std::cout << "\n";
-    }
+    // if (inPlaceMergeSortMedian != -1) 
+    // {
+    //     std::cout << "Median found by InPlaceMergeSort: " << inPlaceMergeSortMedian << "\n";
+    //     std::cout << "Time taken: " << duration << " milliseconds.\n";
+    //     std::cout << "\n";
+    //     std::cout << "\n";
+    // }
 
     // Run halfHeapSort
     int halfHeapSortMedian = halfHeapSort(nums, duration);
@@ -121,44 +121,44 @@ int main()
     }
 
     // Run quickSelect
-    int quickSelectMedian = quickSelect(nums, duration);
+    // int quickSelectMedian = quickSelect(nums, duration);
 
-    if (quickSelectMedian != -1)
-    {
-        std::cout << "Median found by quickSelect: " << quickSelectMedian << "\n";
-        std::cout << "Time taken: " << duration << " milliseconds.\n";
-        std::cout << "\n";
-        std::cout << "\n";
-    }
+    // if (quickSelectMedian != -1)
+    // {
+    //     std::cout << "Median found by quickSelect: " << quickSelectMedian << "\n";
+    //     std::cout << "Time taken: " << duration << " milliseconds.\n";
+    //     std::cout << "\n";
+    //     std::cout << "\n";
+    // }
 
     // Run quickSelect on worst-case input
-    std::vector<int> worstCaseInput = worstCaseQuickSelect();
-    std::cout << "Original randomized worst case vector: ";
-    for (const auto& num : worstCaseInput) {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
-    int quickSelectWorstCaseMedian = quickSelect(worstCaseInput, duration);
+    // std::vector<int> worstCaseInput = worstCaseQuickSelect();
+    // std::cout << "Original randomized worst case vector: ";
+    // for (const auto& num : worstCaseInput) {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
+    // std::cout << "\n";
+    // std::cout << "\n";
+    // int quickSelectWorstCaseMedian = quickSelect(worstCaseInput, duration);
 
-    if (quickSelectWorstCaseMedian != -1) {
-        std::cout << "Median found by quickSelect on worst-case input: " << quickSelectWorstCaseMedian << "\n";
-        std::cout << "Time taken: " << duration << " milliseconds.\n";
-        std::cout << "\n";
-        std::cout << "\n";
-    }
+    // if (quickSelectWorstCaseMedian != -1) {
+    //     std::cout << "Median found by quickSelect on worst-case input: " << quickSelectWorstCaseMedian << "\n";
+    //     std::cout << "Time taken: " << duration << " milliseconds.\n";
+    //     std::cout << "\n";
+    //     std::cout << "\n";
+    // }
 
     // Run medianOfMediansMethod
     //std::vector<int> medianOfMediansInput = nums; // Copy the original vector for testing
-    int medianOfMediansResult = medianOfMediansMethod(nums, duration);
+    // int medianOfMediansResult = medianOfMediansMethod(nums, duration);
 
-    if (medianOfMediansResult != -1) {
-        std::cout << "Median found by Median of Medians: " << medianOfMediansResult << "\n";
-        std::cout << "Time taken: " << duration << " milliseconds.\n";
-        std::cout << "\n";
-        std::cout << "\n";
-    }
+    // if (medianOfMediansResult != -1) {
+    //     std::cout << "Median found by Median of Medians: " << medianOfMediansResult << "\n";
+    //     std::cout << "Time taken: " << duration << " milliseconds.\n";
+    //     std::cout << "\n";
+    //     std::cout << "\n";
+    // }
 
     return 0;
 }

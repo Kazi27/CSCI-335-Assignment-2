@@ -73,6 +73,24 @@ int main()
 
     std::cout << "Number of elements in the vector: " << nums.size() << "\n";
 
+    // std::vector<int> worstCaseInput = worstCaseQuickSelect();
+    // std::vector<int> worstVect1 = worstCaseInput;
+    // std::vector<int> worstVect2 = worstCaseInput;
+    // std::vector<int> worstVect3 = worstCaseInput;
+    // std::vector<int> worstVect4 = worstCaseInput;
+    // std::vector<int> worstVect5 = worstCaseInput;
+    // std::vector<int> worstVect6 = worstCaseInput; //all of this is to run worstcase vector of size 20k on the funcs, pass worstvvect as param
+    // std::vector<int> worstVect7 = worstCaseInput;
+    // std::vector<int> worstVect8 = worstCaseInput;
+
+    // std::cout << "Original randomized worst case vector: ";
+    // for (const auto& num : worstCaseInput) {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
+    // std::cout << "\n";
+    // std::cout << "\n";
+
     // Run halfSelectionSort
     int halfSelectionSortMedian = halfSelectionSort(OGvector1, duration);
 
@@ -141,13 +159,13 @@ int main()
 
     // Run quickSelect on worst-case input
     std::vector<int> worstCaseInput = worstCaseQuickSelect();
-    std::cout << "Original randomized worst case vector: ";
-    for (const auto& num : worstCaseInput) {
-        std::cout << num << " ";
-    }
-    std::cout << "\n";
-    std::cout << "\n";
-    std::cout << "\n";
+    // std::cout << "Original randomized worst case vector: ";
+    // for (const auto& num : worstCaseInput) {
+    //     std::cout << num << " ";
+    // }
+    // std::cout << "\n";
+    // std::cout << "\n";
+    // std::cout << "\n";
     int quickSelectWorstCaseMedian = quickSelect(worstCaseInput, duration);
 
     if (quickSelectWorstCaseMedian != -1) {

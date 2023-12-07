@@ -24,10 +24,10 @@ int main()
     
     //given inputs (input 1,2 and 3 size is 1000, input 4, 5 and 6 size is 31623, input 7, 8 and 7 size is 1000000)
     //std::ifstream inputFile("./input1.txt"); //50492874 all sorts work? 
-    //std::ifstream inputFile("./input2.txt"); //19250688 all sorts work?
+    std::ifstream inputFile("./input2.txt"); //19250688 all sorts work?
     //std::ifstream inputFile("./input3.txt"); //70244369 all sorts work?
     //std::ifstream inputFile("./input4.txt"); //50173306 but halfselect returns 83399603
-    std::ifstream inputFile("./input5.txt"); //18637175 but halfselect returns 35469324
+    //std::ifstream inputFile("./input5.txt"); //18637175 but halfselect returns 35469324
     //std::ifstream inputFile("./input6.txt"); //70984972 but halfselect returns 99445844
     //std::ifstream inputFile("./input7.txt"); //input too big for half select, 49971079, quickselect and median of medians takes too long?
     //std::ifstream inputFile("./input8.txt"); //input too big for half select, 18675104, quickselect and median of medians takes too long?
@@ -52,9 +52,9 @@ int main()
     }
 
     int duration;
-    std::vector<int> OGvector1 = nums;
-    std::vector<int> OGvector2 = nums;
-    std::vector<int> OGvector3 = nums;
+    std::vector<int> OGvector1 = nums; //in order to not sort an already sorted nums when i do make rebuild or run main executable file
+    std::vector<int> OGvector2 = nums; //whatevr nums has og vector # has it, u pass these to the functions instead of the same nums vector
+    std::vector<int> OGvector3 = nums; //cause what if the nums vector is altered
     std::vector<int> OGvector4 = nums;
     std::vector<int> OGvector5 = nums;
     std::vector<int> OGvector6 = nums;

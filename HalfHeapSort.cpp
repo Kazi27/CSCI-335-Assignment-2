@@ -96,17 +96,20 @@
 //     //side note: we probably use the helper here because its recursive and we dont want to call the main function more than once because it prints statements and times clocks?
 // }
 #include "HalfHeapSort.hpp"
+// parameter "hole" is the index of the hole.
+// percDown precondition: value to be inserted into hole is stored in heap at index 0. The hole itself may be in an unspecified state - i.e. it doesn't matter what's in it since you'll be overwriting it anyway.
+// percDown postcondition: hole has been moved into correct place and value has been inserted into hole.
 void percDown(std::vector<int> &heap, int hole, int size)
 {
     int temp = std::move(heap[hole]);
 
     while (hole * 2 + 1 < size)
     {
-        int child = hole * 2 + 1; // Left child
-        // Selecting the larger child. If they are equal, left child is chosen.
+        int child = hole * 2 + 1; //left child
+        //selecting da larger child and if they are equal, chosoe the left child
         if (child != size - 1 && heap[child] > heap[child + 1])
         {
-            child++; // Right child if larger
+            child++; //right child if larger
         }
 
         if (heap[child] < temp)
@@ -141,10 +144,11 @@ int halfHeapSort(std::vector<int> &nums, int &duration) // func delcr
     nums.erase(nums.begin());
     // std::swap(nums[0], nums[nums.size() - 1]);
 
-    // Perform partial heapsort to get bottom n/2 elements in ascending order
+    //partial heapsort to get bottom n/2 elements in ascending order
     buildHeap(nums);
 
     int size = nums.size(); 
+    //int size = (nums.size() - 1) / 2; //exclude first element at index 0 //uncomment this to make small inpiut work
 
     while (size > (nums.size() / 2 + 1))
     {
@@ -158,7 +162,7 @@ int halfHeapSort(std::vector<int> &nums, int &duration) // func delcr
 
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
-    // Median is at the root of the remaining heap
+    //median is at root of the remaining heap
     int median = nums[0];
     return median;
 }

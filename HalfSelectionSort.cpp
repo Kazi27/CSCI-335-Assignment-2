@@ -61,30 +61,64 @@
 // }
 
 // HalfSelectionSort.cpp
+// #include "HalfSelectionSort.hpp"
+
+// int halfSelectionSort(std::vector<int>& nums, int& duration) {
+//     using namespace std::chrono;
+//     auto start = high_resolution_clock::now();
+
+//     if (nums.size() > 50000) {
+//         std::cout << "Input too big for selection sort." << std::endl;
+//         return -1; // or some other default value
+//     }
+
+//     size_t n = nums.size();
+//     for (size_t i = 0; i < n / 2; ++i) {
+//         size_t min_index = i;
+//         for (size_t j = i + 1; j < n; ++j) {
+//             if (nums[j] < nums[min_index]) {
+//                 min_index = j;
+//             }
+//         }
+//         std::swap(nums[i], nums[min_index]);
+//     }
+
+//     auto stop = high_resolution_clock::now();
+//     duration = duration_cast<milliseconds>(stop - start).count();
+//     return nums[nums.size() / 2 - 1];
+
+// }
 #include "HalfSelectionSort.hpp"
 
-int halfSelectionSort(std::vector<int>& nums, int& duration) {
-    using namespace std::chrono;
-    auto start = high_resolution_clock::now();
+int halfSelectionSort ( std::vector<int>& nums, int& duration ) {
+    // auto start_time = std::chrono::high_resolution_clock::now();
 
     if (nums.size() > 50000) {
-        std::cout << "Input too big for selection sort." << std::endl;
-        return -1; // or some other default value
+        return 0;
     }
 
-    size_t n = nums.size();
-    for (size_t i = 0; i < n / 2; ++i) {
-        size_t min_index = i;
-        for (size_t j = i + 1; j < n; ++j) {
-            if (nums[j] < nums[min_index]) {
-                min_index = j;
+    auto start_time = std::chrono::high_resolution_clock::now();
+    for (int i = 0; i < nums.size()/2; ++i) {
+        int smallest = i;
+        for (int j=i+1; j < nums.size(); ++j) {
+            if (nums[j] < nums[smallest]) {
+                smallest = j;
             }
         }
-        std::swap(nums[i], nums[min_index]);
+        std::swap(nums[i], nums[smallest]);
     }
 
-    auto stop = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(stop - start).count();
-    return nums[nums.size() / 2 - 1];
+    auto end_time = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::microseconds>(end_time - start_time).count();
 
+    // for (int i = 0; i <= nums.size(); i++) {
+    //     std::cout << nums[i] << " ";
+    // }
+
+    if (nums.size() % 2 == 0) {
+        // return nums[nums.size() / 2 -1];
+        return std::min(nums[nums.size() / 2 - 1], nums[nums.size() / 2]);
+    } else {
+        return nums[nums.size() / 2];
+    }
 }

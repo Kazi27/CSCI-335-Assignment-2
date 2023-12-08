@@ -139,7 +139,7 @@ int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
         return -1;
     }
 
-    auto mid = nums.begin() + nums.size()/2;
+    auto mid = nums.begin() + nums.size()/2; //halfway midpoint
     for (auto i = nums.begin(); i < mid + 1; ++i) //iteratre thru vector to find the ith smallest element & move it to the ith pos like find first smallest, put it first spot, go halfway
     {
         auto min = i; //initialize index of the min element to curr iteration index i

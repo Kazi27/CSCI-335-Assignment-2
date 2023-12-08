@@ -130,7 +130,7 @@ int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
 
     const int size = nums.size(); //size of input vector
 
-    const int limit = size / 2; //caalc limit (half of vector size)
+    //const int limit = size / 2; //caalc limit (half of vector size)
 
     if (size > 50000) //if the input size is too large for the algo
     {
@@ -139,11 +139,12 @@ int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
         return -1;
     }
 
-    for (auto i = nums.begin(); i != nums.begin() + limit; ++i) //iteratre thru vector to find the ith smallest element & move it to the ith pos like find first smallest, put it first spot, go halfway
+    auto mid = nums.begin() + nums.size()/2;
+    for (auto i = nums.begin(); i < mid + 1; ++i) //iteratre thru vector to find the ith smallest element & move it to the ith pos like find first smallest, put it first spot, go halfway
     {
         auto min = i; //initialize index of the min element to curr iteration index i
 
-        for (auto j = i + 1; j != nums.end(); ++j) //iterate thru unsorted portion to find the minimum element remember i is till midpoint, j is from midpoint till end
+        for (auto j = i + 1; j < nums.end(); ++j) //iterate thru unsorted portion to find the minimum element remember i is till midpoint, j is from midpoint till end
         {
             if (*j < *min) //if ur current element is smaller than element at min_index, 
             {

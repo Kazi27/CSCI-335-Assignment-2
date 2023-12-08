@@ -1,6 +1,7 @@
 // //Name: Kazi Sameen Anwar
 // //CSCI - 335 Assignment 2
 
+//version 1
 // #include "HalfSelectionSort.hpp"
 
 // int halfSelectionSort(std::vector<int>& nums, int& duration) //func declr
@@ -60,6 +61,7 @@
 //     }
 // }
 
+//version 2
 // HalfSelectionSort.cpp
 // #include "HalfSelectionSort.hpp"
 
@@ -88,6 +90,8 @@
 //     return nums[nums.size() / 2 - 1];
 
 // }
+
+//version 3
 //#include "HalfSelectionSort.hpp"
 
 // int halfSelectionSort ( std::vector<int>& nums, int& duration ) {

@@ -3,9 +3,11 @@
 
 #include "QuickSelect.hpp"
 
+//purpose of this func is to find a suitable pivot to provide an even partition
+//all of these if and else if statements bascially effectively checks which between mid/high/low is closes to actual middle of the vector to be the pivot
 std::vector<int>::iterator choosePivot(std::vector<int>& nums,std::vector<int>::iterator low, std::vector<int>::iterator high)
 {
-    std::vector<int>::iterator mid = low + (high - low) / 2; 
+    std::vector<int>::iterator mid = low + (high - low) / 2; //midpoint iterator between low and high
     if (*low < *mid) 
     { 
         if (*mid < *high) 
@@ -40,34 +42,44 @@ std::vector<int>::iterator choosePivot(std::vector<int>& nums,std::vector<int>::
 
 std::vector<int>::iterator hoarePartition(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high)
 {
-    std::vector<int>::iterator pivot = choosePivot(nums, low, high); 
-    std::swap(*pivot, *(high - 1)); 
+    std::vector<int>::iterator pivot = choosePivot(nums, low, high); //returns pivot
+    std::swap(*pivot, *(high - 1)); //pivot swapped with second to last element
     pivot = high - 1; 
     
-    auto i = low; 
-    auto j = high - 2; 
+    auto i = low; //moves right, looking for stuff smaller than the pivot
+    auto j = high - 2; //moves left, looking for stuff bigger than the pivot
     while (true) 
     { 
         while (*i < *pivot) 
-        ++i; 
+        {
+            ++i; //move right when smaller than pivot
+        }
+
         while (*j > *pivot) 
-        --j; 
+        {
+            --j; //move left when bigger than pivot
+        }
+
         if (i < j) 
-        std::swap(*i, *j); 
+        {
+            std::swap(*i, *j); //when they meet or cross swap
+        }
         
         else 
+        {
             break; 
+        }
     } 
     
     std::swap(*i, *pivot); 
-    return i;
+    return i; //by the end u have a left part smaller than pivot, right part bigger than pivot
 }
 
 void recursiveQuickSelect(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high) 
 { 
-    while (high - low > 10) 
+    while (high - low > 10) //keeps calling itself till the remaining pile size is less than 11
     { 
-        std::vector<int>::iterator pivot = hoarePartition(nums, low, high); 
+        std::vector<int>::iterator pivot = hoarePartition(nums, low, high); //divide into two parts
         if (pivot - low < high - pivot) 
         { 
             recursiveQuickSelect(nums, low, pivot); 
@@ -80,7 +92,7 @@ void recursiveQuickSelect(std::vector<int>& nums, std::vector<int>::iterator low
             high = pivot; 
         } 
     } 
-    std::sort(low, high); 
+    std::sort(low, high); //recursion too deep use nromal sort
 }
 
 int quickSelect(std::vector<int>& nums, int& duration) //func declr

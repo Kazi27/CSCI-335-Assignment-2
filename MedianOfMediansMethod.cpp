@@ -11,7 +11,7 @@ int medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high
 //find median of medians
 int medianOfMedians(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high) 
 {
-    int groupSize = 5;
+    int groupSize = 5; //so ur group size is 5 an ur gonna find the median in this group of 5
     int size = high - low + 1;
     int numGroups = size / groupSize;
 
@@ -53,7 +53,7 @@ int medianOfMediansMethod(std::vector<int>& nums, int& duration)
 {
     auto start = std::chrono::high_resolution_clock::now();
 
-    recursiveQuickSelect(nums, nums.begin(), nums.end());
+    recursiveQuickSelect(nums, nums.begin(), nums.end()); //ur gonna find medians of groups of 5 and then find the medians of all the medians you get till theres only one median left
 
     auto end = std::chrono::high_resolution_clock::now();
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();

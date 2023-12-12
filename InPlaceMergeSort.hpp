@@ -1,49 +1,48 @@
-//Name: Kazi Sameen Anwar
-//CSCI - 335 Assignment 2
+// //Name: Kazi Sameen Anwar
+// //CSCI - 335 Assignment 2
 
-#ifndef INPLACEMERGESORT_HPP
-#define INPLACEMERGESORT_HPP //hpp stuff
+// #ifndef INPLACEMERGESORT_HPP
+// #define INPLACEMERGESORT_HPP //hpp stuff
 
-#include <iostream> //guards
-#include <vector>
-#include <algorithm>
-#include <chrono>
-#include <fstream>
-#include <iterator>
+// #include <iostream> //guards
+// #include <vector>
+// #include <algorithm>
+// #include <chrono>
+// #include <fstream>
 
-int inPlaceMergeSort (std::vector<int>& nums, int& duration)
-{
-    auto start = std::chrono::high_resolution_clock::now(); //start clock
+// int inPlaceMergeSort (std::vector<int>& nums, int& duration)
+// {
+//     auto start = std::chrono::high_resolution_clock::now(); //start clock
 
-    mergeSortRec(nums, 0, nums.size() - 1); //inplace merge sort on whole vect
+//     mergeSortRec(nums, 0, nums.size() - 1); //inplace merge sort on whole vect
 
-    auto end = std::chrono::high_resolution_clock::now(); //enc clock
-    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //calc duration
+//     auto end = std::chrono::high_resolution_clock::now(); //enc clock
+//     //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //calc duration
 
-    //print sorted vector but remove in the final
-    // std::cout << "Sorted vector by InPlaceMergeSort: ";
-    // for (const auto& num : nums) 
-    // {
-    //     std::cout << num << " ";
-    // }
-    // std::cout << "\n";
+//     //print sorted vector but remove in the final
+//     // std::cout << "Sorted vector by InPlaceMergeSort: ";
+//     // for (const auto& num : nums) 
+//     // {
+//     //     std::cout << num << " ";
+//     // }
+//     // std::cout << "\n";
 
-    //return the median, specs say its the lesser of the two middle elements IF ITS EVEN, if odd just return the middle one
-    int size1 = nums.size(); //using size1 here because used size before
-    if (size1 % 2 == 0) //for even-sized vectors
-    {
-        //return the lesser of the middle elements
-        return std::min(nums[size1 / 2 - 1], nums[size1 / 2]);
-    } 
+//     //return the median, specs say its the lesser of the two middle elements IF ITS EVEN, if odd just return the middle one
+//     int size1 = nums.size(); //using size1 here because used size before
+//     if (size1 % 2 == 0) //for even-sized vectors
+//     {
+//         //return the lesser of the middle elements
+//         return std::min(nums[size1 / 2 - 1], nums[size1 / 2]);
+//     } 
 
-    else 
-    {
-        //for odd-sized vectors, return middle element
-        return nums[size1 / 2];
-    }
+//     else 
+//     {
+//         //for odd-sized vectors, return middle element
+//         return nums[size1 / 2];
+//     }
 
-    //side note: we probably use the helper here because its recursive and we dont want to call the main function more than once because it prints statements and times clocks?
-}
+//     //side note: we probably use the helper here because its recursive and we dont want to call the main function more than once because it prints statements and times clocks?
+// }
 // void merge(std::vector<int>& nums, size_t left, size_t mid, size_t right)
 // {
 //     std::vector<int> leftHalf(nums.begin() + left, nums.begin() + mid + 1); //temp vect to hold the left half
@@ -87,15 +86,46 @@ int inPlaceMergeSort (std::vector<int>& nums, int& duration)
 //     }
 // }
 
-void mergeSortRec(std::vector<int>& nums, std::vector<int>::iterator start, std::vector<int>::iterator end) 
-{
-    if (start < end - 1) // More than one element
-    { 
+// #endif
+
+// InPlaceMergeSort.hpp
+#ifndef INPLACEMERGESORT_HPP
+#define INPLACEMERGESORT_HPP
+
+#include <vector>
+#include <algorithm> // for std::inplace_merge
+#include <chrono>
+#include <iterator> // for std::distance
+
+// Helper function for recursive in-place merge sort
+void inPlaceMergeSortRecursive(std::vector<int>& nums, std::vector<int>::iterator start, std::vector<int>::iterator end) {
+    if (start < end - 1) { // More than one element
         auto mid = start + std::distance(start, end) / 2;
-        mergeSortRec(nums, start, mid); // Sort first half
-        mergeSortRec(nums, mid, end);   // Sort second half
+        inPlaceMergeSortRecursive(nums, start, mid); // Sort first half
+        inPlaceMergeSortRecursive(nums, mid, end);   // Sort second half
         std::inplace_merge(start, mid, end);         // In-place merge the two halves
     }
 }
 
-#endif
+
+int inPlaceMergeSort(std::vector<int> &nums, int &duration)
+{
+    auto start_time = std::chrono::high_resolution_clock::now();
+
+inPlaceMergeSortRecursive(nums, nums.begin(), nums.end());
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
+
+    int median;
+    if (nums.size() % 2 == 0)
+    {
+        median = nums[nums.size() / 2 - 1]; 
+    }
+    else
+    {
+        median = nums[nums.size() / 2]; 
+}
+
+#endif // INPLACEMERGESORT_HPP
+}

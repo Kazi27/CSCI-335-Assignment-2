@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <chrono>
 #include <fstream>
+#include <iterator>
 
 int inPlaceMergeSort (std::vector<int>& nums, int& duration)
 {
@@ -43,46 +44,57 @@ int inPlaceMergeSort (std::vector<int>& nums, int& duration)
 
     //side note: we probably use the helper here because its recursive and we dont want to call the main function more than once because it prints statements and times clocks?
 }
-void merge(std::vector<int>& nums, size_t left, size_t mid, size_t right)
+// void merge(std::vector<int>& nums, size_t left, size_t mid, size_t right)
+// {
+//     std::vector<int> leftHalf(nums.begin() + left, nums.begin() + mid + 1); //temp vect to hold the left half
+//     std::vector<int> rightHalf(nums.begin() + mid + 1, nums.begin() + right + 1); //temp vect to hold the right half
+
+//     std::vector<int>::iterator leftIter = leftHalf.begin(); //initialize iterators
+//     std::vector<int>::iterator rightIter = rightHalf.begin(); 
+//     std::vector<int>::iterator numsIter = nums.begin() + left;
+
+//     while (leftIter != leftHalf.end() && rightIter != rightHalf.end()) //as long as you're not at the end yet for either iterator,
+//     {
+//         if (*leftIter <= *rightIter) //if ur current element in the left half is <= to curr element in the right half
+//         {
+//             *numsIter = *leftIter; //copy element from left half to the original vector
+//             ++leftIter; //then move to the next element in the left half
+//         } 
+
+//         else //this means the right iter >= left iter so
+//         {
+//             *numsIter = *rightIter; //first copy element from right half to the OG vector
+//             ++rightIter; //now move to the next element in the right half
+//         }
+
+//         ++numsIter; //when ur here just move to the next position in the OG vector
+//     }
+
+//     std::copy(leftIter, leftHalf.end(), numsIter); //copy remainin elements of each half if any
+//     std::copy(rightIter, rightHalf.end(), numsIter);
+// }
+
+// void mergeSortRec(std::vector<int>& nums, size_t left, size_t right)
+// {
+//     if (left < right) 
+//     {
+//         size_t mid = left + (right - left) / 2; //middle index
+
+//         mergeSortRec(nums, left, mid); //recursively sort left and right halves, left to mid and then mid+1 to right. 
+//         mergeSortRec(nums, mid + 1, right); //split and call mergesort again and again till array size 1 i believe
+
+//         merge(nums, left, mid, right); //merge the two halves in-place
+//     }
+// }
+
+void mergeSortRec(std::vector<int>& nums, std::vector<int>::iterator start, std::vector<int>::iterator end) 
 {
-    std::vector<int> leftHalf(nums.begin() + left, nums.begin() + mid + 1); //temp vect to hold the left half
-    std::vector<int> rightHalf(nums.begin() + mid + 1, nums.begin() + right + 1); //temp vect to hold the right half
-
-    std::vector<int>::iterator leftIter = leftHalf.begin(); //initialize iterators
-    std::vector<int>::iterator rightIter = rightHalf.begin(); 
-    std::vector<int>::iterator numsIter = nums.begin() + left;
-
-    while (leftIter != leftHalf.end() && rightIter != rightHalf.end()) //as long as you're not at the end yet for either iterator,
-    {
-        if (*leftIter <= *rightIter) //if ur current element in the left half is <= to curr element in the right half
-        {
-            *numsIter = *leftIter; //copy element from left half to the original vector
-            ++leftIter; //then move to the next element in the left half
-        } 
-
-        else //this means the right iter >= left iter so
-        {
-            *numsIter = *rightIter; //first copy element from right half to the OG vector
-            ++rightIter; //now move to the next element in the right half
-        }
-
-        ++numsIter; //when ur here just move to the next position in the OG vector
-    }
-
-    std::copy(leftIter, leftHalf.end(), numsIter); //copy remainin elements of each half if any
-    std::copy(rightIter, rightHalf.end(), numsIter);
-}
-
-void mergeSortRec(std::vector<int>& nums, size_t left, size_t right)
-{
-    if (left < right) 
-    {
-        size_t mid = left + (right - left) / 2; //middle index
-
-        mergeSortRec(nums, left, mid); //recursively sort left and right halves, left to mid and then mid+1 to right. 
-        mergeSortRec(nums, mid + 1, right); //split and call mergesort again and again till array size 1 i believe
-
-        merge(nums, left, mid, right); //merge the two halves in-place
+    if (start < end - 1) // More than one element
+    { 
+        auto mid = start + std::distance(start, end) / 2;
+        mergeSortRec(nums, start, mid); // Sort first half
+        mergeSortRec(nums, mid, end);   // Sort second half
+        std::inplace_merge(start, mid, end);         // In-place merge the two halves
     }
 }
 

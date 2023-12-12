@@ -42,6 +42,8 @@
 // }
 
 // #endif
+#ifndef WORSTQUICKSELECT_HPP
+#define WORSTQUICKSELECT_HPP //hpp stuff
 
 #include <vector>
 #include <algorithm>
@@ -58,3 +60,4 @@ std::vector<int> worstCaseQuickSelect()
 
     return worstCaseInput;
 }
+#endif

@@ -17,7 +17,7 @@ int medianOfMediansMethod(std::vector<int>& nums, int& duration)
     recursiveQuickSelect(nums, nums.begin(), nums.end()); //ur gonna find medians of groups of 5 and then find the medians of all the medians you get till theres only one median left
 
     auto end = std::chrono::high_resolution_clock::now();
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
     // Print the sorted vector (for testing purposes, remove in the final version)
     // std::cout << "Sorted vector by Median of Medians: ";

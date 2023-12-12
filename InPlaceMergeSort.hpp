@@ -17,7 +17,7 @@ int inPlaceMergeSort (std::vector<int>& nums, int& duration)
     mergeSortRec(nums, 0, nums.size() - 1); //inplace merge sort on whole vect
 
     auto end = std::chrono::high_resolution_clock::now(); //enc clock
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //calc duration
+    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //calc duration
 
     //print sorted vector but remove in the final
     // std::cout << "Sorted vector by InPlaceMergeSort: ";

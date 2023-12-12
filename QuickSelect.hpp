@@ -18,7 +18,7 @@ int quickSelect (std::vector<int>& nums, int& duration)
 
     auto end = std::chrono::high_resolution_clock::now(); //yea we know
 
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
+    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
 
     //print the sorted vector (for testing purposes, remove in the final version)
     // std::cout << "Sorted vector by QuickSelect: ";

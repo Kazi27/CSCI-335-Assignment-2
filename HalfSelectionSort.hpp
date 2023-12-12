@@ -42,7 +42,7 @@ int halfSelectionSort (std::vector<int>& nums, int& duration) //func declr
 
     auto end_time = std::chrono::high_resolution_clock::now(); //end time of algo
 
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
+    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
 
     //print sorted vector but remove in the final
     //     // std::cout << "Sorted vector by HalfSelectionSort: ";

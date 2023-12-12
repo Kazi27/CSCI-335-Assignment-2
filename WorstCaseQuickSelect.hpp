@@ -45,9 +45,13 @@
 #ifndef WORSTQUICKSELECT_HPP
 #define WORSTQUICKSELECT_HPP //hpp stuff
 
+#include <iostream> //guards
 #include <vector>
 #include <algorithm>
 #include <chrono>
+#include <fstream>
+#include <iterator> //for shuffle
+#include <random> //for shuffle
 
 std::vector<int> worstCaseQuickSelect()
 {

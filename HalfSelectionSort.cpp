@@ -1,5 +1,6 @@
 // // //Name: Kazi Sameen Anwar
 // // //CSCI - 335 Assignment 2
+//MERGED THIS INTO HPP AS PER PROJECT SPECS
 
 // //version 1
 // // #include "HalfSelectionSort.hpp"

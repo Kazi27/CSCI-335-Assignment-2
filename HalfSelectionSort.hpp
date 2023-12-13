@@ -1,5 +1,6 @@
 //Name: Kazi Sameen Anwar
 //CSCI - 335 Assignment 2
+//this is the working version giving me points, below is another version, cpp file contains pervious versions I tested before autograder was up
 
 #ifndef HALFSELECTIONSORT_HPP
 #define HALFSELECTIONSORT_HPP //hpp stuff
@@ -13,7 +14,42 @@
 int halfSelectionSort (std::vector<int>& nums, int& duration) //func declr
 {
     auto start_time = std::chrono::high_resolution_clock::now(); //start time of algo
+    int count = 0;
+    if (nums.size() > 50000) //if the input size is too large for the algo
+    {
+        std::cout << "The input was too big for selection sort.";
+    } 
+    
+    else 
+    {
+        for (auto i = nums.begin(); i != nums.end(); ++i) 
+        {
+            auto min = i; //initialize index of the min element to curr iteration index i
 
+            if (count == (nums.size()/2) + (nums.size()%2))
+            {
+                break;
+            }
+            
+
+            for (auto j = i + 1; j != nums.end(); ++j) //iterate thru unsorted portion to find the minimum element remember i is till midpoint, j is from midpoint till end
+            {
+                if (*j < *min) //if ur current element is smaller than element at min_index, 
+                {
+                    min = j; //thats ur new min
+                }
+            }
+
+            std::swap(*i, *min); //swap curr element w/ the min element from unsorted portion
+            count++;
+        }
+    }
+
+    auto end_time = std::chrono::high_resolution_clock::now(); //end time of algo
+
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
+
+    //PREVIOUS VERSION
     // const int size = nums.size(); //size of input vector
 
     // //const int limit = size / 2; //caalc limit (half of vector size)
@@ -39,32 +75,6 @@ int halfSelectionSort (std::vector<int>& nums, int& duration) //func declr
     //     }
     //     std::iter_swap(min, i); //swap curr element w/ the min element from unsorted portion
     // }
-    int count = 0;
-    if (nums.size() > 50000) {
-        std::cout << "The input was too big for selection sort.";
-    } else {
-        for (auto i = nums.begin(); i != nums.end(); ++i) {
-            auto min = i; // sets min to be i which iterated through the vector
-
-            if (count == (nums.size()/2) + (nums.size()%2))
-            {
-                break;
-            }
-            
-
-            for (auto j = i + 1; j != nums.end(); ++j) {
-                if (*j < *min) {
-                    min = j;
-                }
-            }
-            std::swap(*i, *min);
-            count++;
-        }
-    }
-
-    auto end_time = std::chrono::high_resolution_clock::now(); //end time of algo
-
-    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
 
     //print sorted vector but remove in the final
     //     // std::cout << "Sorted vector by HalfSelectionSort: ";

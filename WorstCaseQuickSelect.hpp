@@ -42,27 +42,43 @@
 // }
 
 // #endif
-#ifndef WORSTQUICKSELECT_HPP
-#define WORSTQUICKSELECT_HPP //hpp stuff
+// #ifndef WORSTQUICKSELECT_HPP
+// #define WORSTQUICKSELECT_HPP //hpp stuff
 
-#include <iostream> //guards
+// #include <iostream> //guards
+// #include <vector>
+// #include <algorithm>
+// #include <chrono>
+// #include <fstream>
+// #include <iterator> //for shuffle
+// #include <random> //for shuffle
+
+// std::vector<int> worstCaseQuickSelect()
+// {
+//     std::vector<int> worstCaseInput(20000);
+
+//     for (int i = 0; i < 10000; ++i)
+//     {
+//         worstCaseInput[i] = i + 1;
+//         worstCaseInput[i + 10000] = 20000 - i;
+//     }
+
+//     return worstCaseInput;
+// }
+// #endif
+
 #include <vector>
 #include <algorithm>
 #include <chrono>
-#include <fstream>
-#include <iterator> //for shuffle
-#include <random> //for shuffle
 
 std::vector<int> worstCaseQuickSelect()
 {
     std::vector<int> worstCaseInput(20000);
 
-    for (int i = 0; i < 10000; ++i)
+    for (int i = 0; i < 20000; ++i)
     {
-        worstCaseInput[i] = i + 1;
-        worstCaseInput[i + 10000] = 20000 - i;
+        worstCaseInput[i] = 20000 - i;
     }
 
     return worstCaseInput;
 }
-#endif

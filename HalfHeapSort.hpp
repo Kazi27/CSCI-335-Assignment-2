@@ -15,37 +15,29 @@
 // percDown postcondition: hole has been moved into correct place and value has been inserted into hole.
 void percDown(std::vector<int>& heap, std::vector<int>::size_type hole)
 {
-    int size = heap.size();
-        int temp = std::move(heap[hole]);
+    int leftChild;
+    int temp = heap[0];
 
-        while (hole * 2 + 1 < size)
-        {
-            int child = hole * 2 + 1; //left child
-            //selecting da larger child and if they are equal, chosoe the left child
-            if (child != size - 1 && heap[child] > heap[child + 1])
-            {
-                child++; //right child if larger
-            }
-
-            if (heap[child] < temp)
-            {
-                heap[hole] = std::move(heap[child]);
-                hole = child;
-            }
-
-            else
-            {
-                break;
-            }
+    for(; hole * 2 < heap.size(); hole = leftChild) {
+        leftChild = hole * 2;
+        if(leftChild + 1 < heap.size() && heap[leftChild] > heap[leftChild + 1]) {
+            leftChild++;
+        }   
+        if(temp > heap[leftChild]) {
+            heap[hole] = heap[leftChild];
         }
-        heap[hole] = std::move(temp);
+        else{
+            break;
+        }
+    }
+
+    heap[hole] = temp;
 }
 
 void buildHeap(std::vector<int>& heap)
 {
-    int size = heap.size();
-    for (int i = (size - 2) / 2; i >= 0; --i)
-    {
+    for(int i = (heap.size()-1)/2; i > 0; i--) {
+        heap[0] = heap[i];
         percDown(heap, i);
     }
 }
@@ -55,14 +47,15 @@ int halfHeapSort(std::vector<int>& nums, int& duration)
     auto start_time = std::chrono::high_resolution_clock::now(); // start_time time of algo
 
     // Move the first element to the end
-    nums.push_back(std::move(nums[0]));
-    nums.erase(nums.begin());
+    // nums.push_back(std::move(nums[0]));
+    // nums.erase(nums.begin());
     // std::swap(nums[0], nums[nums.size() - 1]);
+    nums.push_back(nums[0]);
 
     //partial heapsort to get bottom n/2 elements in ascending order
     buildHeap(nums);
 
-    int size = nums.size(); 
+    //int size = nums.size(); 
     //int size = (nums.size() - 1) / 2; //exclude first element at index 0 //uncomment this to make small inpiut work
 
     // while (size > (nums.size() / 2 + 1))
@@ -71,8 +64,9 @@ int halfHeapSort(std::vector<int>& nums, int& duration)
     //     size--;
     //     percDown(nums, 0, size);
     // }
+    int middle = (nums.size()-2)/2;
 
-    for (int i = size; i > (size / 2) + 1; --i)
+    for(int i = 0; i < middle; i++)
     {
         std::swap(nums[0], nums[i - 1]);
         nums.pop_back();
@@ -85,7 +79,7 @@ int halfHeapSort(std::vector<int>& nums, int& duration)
     duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count();
 
     //median is at root of the remaining heap
-    int median = nums[0];
+    int median = nums[1];
     return median;
 }
 

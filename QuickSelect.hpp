@@ -12,13 +12,28 @@
 
 int quickSelect (std::vector<int>& nums, int& duration)
 {
+     if (nums.empty())
+    {
+        return -1; 
+    }
+
+    int n = nums.size();
+    int k = n / 2; 
+
     auto start = std::chrono::high_resolution_clock::now(); //start time of algo
 
-    recursiveQuickSelect(nums, nums.begin(), nums.end()); 
+    if (n % 2 == 0) {
+        k = n / 2 - 1;
+                // int mid1 = quickSelectHelper(nums, nums.begin(), nums.end() - 1, k - 1);
+         quickSelectHelper(nums, nums.begin(), nums.end() - 1, k);
+    } else {
+        k = n / 2;
+         quickSelectHelper(nums, nums.begin(), nums.end() - 1, k);
+    }
 
     auto end = std::chrono::high_resolution_clock::now(); //yea we know
 
-    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
 
     //print the sorted vector (for testing purposes, remove in the final version)
     // std::cout << "Sorted vector by QuickSelect: ";
@@ -48,90 +63,104 @@ int quickSelect (std::vector<int>& nums, int& duration)
 //Note that this implementation of hoarePartition makes it usable with different pivot selection methods, but also requires that you select your pivot and swap it into the last position prior to calling hoarePartition.
 std::vector<int>::iterator hoarePartition (std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high)
 {
-    std::vector<int>::iterator pivot = choosePivot(nums, low, high); //returns pivot
-    std::swap(*pivot, *(high - 1)); //pivot swapped with second to last element
-    pivot = high - 1; 
+    // std::vector<int>::iterator pivot = choosePivot(nums, low, high); //returns pivot
+    // std::swap(*pivot, *(high - 1)); //pivot swapped with second to last element
+    // pivot = high - 1; 
     
-    auto i = low; //moves right, looking for stuff smaller than the pivot
-    auto j = high - 2; //moves left, looking for stuff bigger than the pivot
-    while (true) 
-    { 
-        while (*i < *pivot) 
-        {
-            ++i; //move right when smaller than pivot
-        }
+    // auto i = low; //moves right, looking for stuff smaller than the pivot
+    // auto j = high - 2; //moves left, looking for stuff bigger than the pivot
+    // while (true) 
+    // { 
+    //     while (*i < *pivot) 
+    //     {
+    //         ++i; //move right when smaller than pivot
+    //     }
 
-        while (*j > *pivot) 
-        {
-            --j; //move left when bigger than pivot
-        }
+    //     while (*j > *pivot) 
+    //     {
+    //         --j; //move left when bigger than pivot
+    //     }
 
-        if (i < j) 
-        {
-            std::swap(*i, *j); //when they meet or cross swap
-        }
+    //     if (i < j) 
+    //     {
+    //         std::swap(*i, *j); //when they meet or cross swap
+    //     }
         
-        else 
-        {
-            break; 
-        }
-    } 
+    //     else 
+    //     {
+    //         break; 
+    //     }
+    // } 
     
-    std::swap(*i, *pivot); 
-    return i; //by the end u have a left part smaller than pivot, right part bigger than pivot
+    // std::swap(*i, *pivot); 
+    // return i; //by the end u have a left part smaller than pivot, right part bigger than pivot
+    auto pivot = medianOfThree(low, low + std::distance(low, high) / 2, high);
+    std::iter_swap(pivot, high);
+    auto i = low;
+    auto j = high - 1;
+    while (true)
+    {
+        while (i < j && *i < *high)
+        {
+            i++;
+        }
+        while (j > i && *j >= *high)
+        {
+            j--;
+        }
+        if (i >= j)
+        {
+            break;
+        }
+        std::swap(*i, *j);
+    }
+    std::swap(*i, *high);
+    return i;
 }
 
-void recursiveQuickSelect(std::vector<int>& nums, std::vector<int>::iterator low, std::vector<int>::iterator high)
-{ 
-    while (high - low > 10) //keeps calling itself till the remaining pile size is less than 11
-    { 
-        std::vector<int>::iterator pivot = hoarePartition(nums, low, high); //divide into two parts
-        if (pivot - low < high - pivot) 
-        { 
-            recursiveQuickSelect(nums, low, pivot); 
-            low = pivot + 1; 
-        } 
-            
-        else 
-        { 
-            recursiveQuickSelect(nums, pivot + 1, high); 
-            high = pivot; 
-        } 
-    } 
-    std::sort(low, high); //recursion too deep use nromal sort
-}
-std::vector<int>::iterator choosePivot(std::vector<int>& nums,std::vector<int>::iterator low, std::vector<int>::iterator high)
+int quickSelectHelper(std::vector<int> &nums, std::vector<int>::iterator low, std::vector<int>::iterator high, int k)
 {
-    std::vector<int>::iterator mid = low + (high - low) / 2; //midpoint iterator between low and high
-    if (*low < *mid) 
-    { 
-        if (*mid < *high) 
-        {
-            return mid; 
-        }
+    if (high - low < 10)
+    {
+        std::sort(low, high + 1); 
+        return *(low + k);
+    }
+    auto partition = hoarePartition(nums, low, high);
+    int pivotDist = std::distance(low, partition);
 
-        else if (*low < *high)
-        {
-            return high; 
-        }
-        
-        else
-        {
-            if (*low < *high) 
-            {
-                return low; 
-            }
+    if (pivotDist == k)
+    {
+        return *partition;
+    }
+    else if (pivotDist > k)
+    {
+        return quickSelectHelper(nums, low, partition - 1, k);
+    }
+    else
+    {
+        return quickSelectHelper(nums, partition + 1, high, k - pivotDist - 1);
+    }
+}
 
-            else if (*mid < *high)
-            {
-                return high; 
-            }
-            
-            else 
-            {
-                return mid;
-            } 
-        }
+std::vector<int>::iterator medianOfThree(std::vector<int>::iterator first, std::vector<int>::iterator middle, std::vector<int>::iterator last)
+{
+    if (*first > *middle)
+    {
+        if (*first < *last) 
+            return first;
+        else if (*middle > *last) 
+            return middle;
+        else 
+            return last;
+    }
+    else
+    {
+        if (*first > *last) 
+            return first;
+        else if (*middle < *last) 
+            return middle;
+        else 
+            return last;
     }
 }
 

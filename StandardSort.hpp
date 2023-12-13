@@ -1,5 +1,6 @@
 //Name: Kazi Sameen Anwar
 //CSCI - 335 Assignment 2
+//this is the working version giving me points, STRAUGHT FROM CPP
 
 #ifndef STANDARDSORT_HPP
 #define STANDARDSORT_HPP //hpp stuff
@@ -16,9 +17,9 @@ int standardSort (std::vector<int>& nums, int& duration) //func declr
 
     std::sort(nums.begin(), nums.end()); //std::sort sorts vector in ascending order lmao
 
-    auto stop = std::chrono::high_resolution_clock::now(); //end time of algo
+    auto end = std::chrono::high_resolution_clock::now(); //end time of algo
 
-    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start).count(); //duration of the algo
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //duration of the algo
 
     //dont include this in the final version, but print sorted vector for testing
     // std::cout << "Sorted vector by StandardSort: ";

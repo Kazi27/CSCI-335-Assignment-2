@@ -1,12 +1,14 @@
 //Name: Kazi Sameen Anwar
 //CSCI - 335 Assignment 2
+//for testing with cpp files i used a makefile, make rebuild then ./main
+//for testing with hpp files i did g++ -o main main.cpp then ./main exectuable
 
 #include <iostream>
 #include <fstream>
 #include <vector>
 #include <algorithm>
 #include <chrono>
-#include <iterator> //for shuffle in worst case
+#include <iterator> //for shuffle in worst case //not needed anymore lols
 #include <random> //for shuffle in worst case
 #include "HalfSelectionSort.hpp"
 #include "StandardSort.hpp"
@@ -24,14 +26,14 @@ int main()
     
     //given inputs (input 1,2 and 3 size is 1000, input 4, 5 and 6 size is 31623, input 7, 8 and 7 size is 1000000)
     //std::ifstream inputFile("./input1.txt"); //50492874 all sorts work? 
-    std::ifstream inputFile("./input2.txt"); //19250688 all sorts work?
+    //std::ifstream inputFile("./input2.txt"); //19250688 all sorts work?
     //std::ifstream inputFile("./input3.txt"); //70244369 all sorts work?
-    //std::ifstream inputFile("./input4.txt"); //50173306 but halfselect returns 83399603
-    //std::ifstream inputFile("./input5.txt"); //18637175 but halfselect returns 35469324
-    //std::ifstream inputFile("./input6.txt"); //70984972 but halfselect returns 99445844
-    //std::ifstream inputFile("./input7.txt"); //input too big for half select, 49971079, quickselect and median of medians takes too long?
-    //std::ifstream inputFile("./input8.txt"); //input too big for half select, 18675104, quickselect and median of medians takes too long?
-    //std::ifstream inputFile("./input9.txt"); //input too big for half select, 70722421, quickselect and median of medians takes too long?
+    //std::ifstream inputFile("./input4.txt"); //50173306 
+    //std::ifstream inputFile("./input5.txt"); //18637175 
+    //std::ifstream inputFile("./input6.txt"); //70984972 
+    //std::ifstream inputFile("./input7.txt"); //49971079
+    //std::ifstream inputFile("./input8.txt"); //18675104
+    std::ifstream inputFile("./input9.txt"); //70722421
 
     //own input
     //std::ifstream inputFile("./input10.txt"); 
@@ -73,7 +75,7 @@ int main()
 
     std::cout << "Number of elements in the vector: " << nums.size() << "\n";
 
-    // std::vector<int> worstCaseInput = worstCaseQuickSelect();
+    //std::vector<int> worstCaseInput = worstCaseQuickSelect();
     // std::vector<int> worstVect1 = worstCaseInput;
     // std::vector<int> worstVect2 = worstCaseInput;
     // std::vector<int> worstVect3 = worstCaseInput;
@@ -175,7 +177,7 @@ int main()
         std::cout << "\n";
     }
 
-    // Run medianOfMediansMethod
+    //Run medianOfMediansMethod
     std::vector<int> medianOfMediansInput = nums; // Copy the original vector for testing
     int medianOfMediansResult = medianOfMediansMethod(OGvector7, duration);
 

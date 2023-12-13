@@ -1,6 +1,41 @@
 // //Name: Kazi Sameen Anwar
 // //CSCI - 335 Assignment 2
+//this is the working version giving me points, below is another version, cpp file contains pervious versions I tested before autograder was up
+//relaized we dont gotta make it uniquely random...
 
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+
+std::vector<int>& worstCaseQuickSelect()
+{
+    int size = 20000;
+    int half = (size)/2;
+    static std::vector<int> worstInput(size);
+    std::vector<int>::iterator start = worstInput.begin();
+    std::vector<int>::iterator mid = worstInput.begin() + half; //proj says to use iterators
+    std::vector<int>::iterator end = worstInput.end() - 1;
+    
+    for(int j = 0; j < half; ++j)
+    {
+        if(j % 2 == 0) //if its even
+        {
+            *(mid + j) = j + 1; //value at the middle + j position -> j + 1
+        }
+        
+        else //odd
+        {
+            *(mid + j) = half + j; //value at middle + j position -> half + j
+        }
+
+        *(start + j) = (j + 1) * 2; //start val -> (j + 1) * 2
+    }
+
+    return worstInput;
+}
+
+//OLD VERSION
 // #ifndef WORSTQUICKSELECT_HPP
 // #define WORSTQUICKSELECT_HPP //hpp stuff
 
@@ -42,70 +77,3 @@
 // }
 
 // #endif
-// #ifndef WORSTQUICKSELECT_HPP
-// #define WORSTQUICKSELECT_HPP //hpp stuff
-
-// #include <iostream> //guards
-// #include <vector>
-// #include <algorithm>
-// #include <chrono>
-// #include <fstream>
-// #include <iterator> //for shuffle
-// #include <random> //for shuffle
-
-// std::vector<int> worstCaseQuickSelect()
-// {
-//     std::vector<int> worstCaseInput(20000);
-
-//     for (int i = 0; i < 10000; ++i)
-//     {
-//         worstCaseInput[i] = i + 1;
-//         worstCaseInput[i + 10000] = 20000 - i;
-//     }
-
-//     return worstCaseInput;
-// }
-// #endif
-
-// #include <vector>
-// #include <algorithm>
-// #include <chrono>
-
-// std::vector<int> worstCaseQuickSelect()
-// {
-//     std::vector<int> worstCaseInput(20000);
-
-//     for (int i = 0; i < 20000; ++i)
-//     {
-//         worstCaseInput[i] = 20000 - i;
-//     }
-
-//     return worstCaseInput;
-// }
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-
-std::vector<int>& worstCaseQuickSelect(){
-    //such that the pivot we selected should always be 1 more than the smallest
-    int size = 20000;
-    int halfsize = (size)/2;
-    static std::vector<int> worse(size);
-    std::vector<int>::iterator start = worse.begin();
-    std::vector<int>::iterator center = worse.begin() + halfsize;
-    std::vector<int>::iterator end = worse.end() - 1;
-    
-  
-
-    for(int i = 0; i < halfsize; ++i){
-        if(i % 2 == 0){
-            *(center + i) = i + 1;
-        }else{
-            *(center + i) = halfsize + i;
-        }
-        *(start + i) = (i + 1) * 2;
-    }
-
-    return worse;
-}

@@ -1,5 +1,6 @@
 // #include "MedianOfMediansMethod.hpp"
 // #include "QuickSelect.hpp"
+//MERGED THIS INTO HPP AS PER PROJECT SPECS -- to test this file do make rebuild and uncomment this stuff
 
 // //median of a small array like size = 5
 // int medianOfFive(std::vector<int>::iterator low, std::vector<int>::iterator high) 

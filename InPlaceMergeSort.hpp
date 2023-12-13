@@ -24,12 +24,12 @@ void inPlaceMergeSortRecursive(std::vector<int>& nums, std::vector<int>::iterato
 
 int inPlaceMergeSort(std::vector<int> &nums, int &duration)
 {
-    auto start_time = std::chrono::high_resolution_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
 
     inPlaceMergeSortRecursive(nums, nums.begin(), nums.end()); //side note: we probably use the helper here because its recursive and we dont want to call the main function more than once because it prints statements and times clocks?
 
     auto end = std::chrono::high_resolution_clock::now(); //enc clock
-    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //calc duration
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
 
     //print sorted vector but remove in the final
     // std::cout << "Sorted vector by InPlaceMergeSort: ";
@@ -55,6 +55,7 @@ int inPlaceMergeSort(std::vector<int> &nums, int &duration)
 }
 #endif 
 
+//OLD VERSION
 // #ifndef INPLACEMERGESORT_HPP
 // #define INPLACEMERGESORT_HPP //hpp stuff
 
@@ -141,5 +142,3 @@ int inPlaceMergeSort(std::vector<int> &nums, int &duration)
 // }
 
 // #endif
-
-// InPlaceMergeSort.hpp

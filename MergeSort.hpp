@@ -1,5 +1,6 @@
 //Name: Kazi Sameen Anwar
 //CSCI - 335 Assignment 2
+//this is the working version giving me points, STRAUGHT FROM CPP
 
 #ifndef MERGESORT_HPP
 #define MERGESORT_HPP //hpp stuff
@@ -35,7 +36,7 @@ int mergeSort (std::vector<int>& nums, int& duration)
 
     auto end = std::chrono::high_resolution_clock::now(); //yea we know
 
-    //duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //kay
 
     //print the sorted vector (for testing purposes, remove in the final version)
     // std::cout << "Sorted vector by MergeSort: ";

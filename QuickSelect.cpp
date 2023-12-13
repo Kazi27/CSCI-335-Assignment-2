@@ -1,5 +1,6 @@
 // //Name: Kazi Sameen Anwar
 // //CSCI - 335 Assignment 2
+//MERGED THIS INTO HPP AS PER PROJ SPECS -- to test this file do make rebuild and uncomment this stuff
 
 // #include "QuickSelect.hpp"
 

@@ -12,7 +12,7 @@
 void percDown(std::vector<int>& heap, std::vector<int>::size_type hole) 
 {
     int leftChild;
-    int temp = heap[0];
+    int tempor = heap[0];
 
     for(; hole * 2 < heap.size(); hole = leftChild) 
     {
@@ -22,7 +22,7 @@ void percDown(std::vector<int>& heap, std::vector<int>::size_type hole)
             leftChild++;
         }   
 
-        if(temp > heap[leftChild]) 
+        if(tempor > heap[leftChild]) 
         {
             heap[hole] = heap[leftChild];
         }
@@ -33,7 +33,7 @@ void percDown(std::vector<int>& heap, std::vector<int>::size_type hole)
         }
     }
 
-    heap[hole] = temp;
+    heap[hole] = tempor;
 }
 
 void buildHeap(std::vector<int>& heap) 
@@ -68,8 +68,8 @@ int halfHeapSort(std::vector<int>& nums, int& duration) // func delcr
 
     return nums[1]; //median at nums[1] as per project specs
 }
-// //Name: Kazi Sameen Anwar
-// //CSCI - 335 Assignment 2
+
+//OLD VERSION
 
 // #ifndef HALFHEAPSORT_HPP
 // #define HALFHEAPSORT_HPP //hpp stuff

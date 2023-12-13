@@ -13,8 +13,8 @@
 
 int halfSelectionSort (std::vector<int>& nums, int& duration) //func declr
 {
-    auto start_time = std::chrono::high_resolution_clock::now(); //start time of algo
-    int count = 0;
+    auto start = std::chrono::high_resolution_clock::now(); //start time of algo
+    int counter = 0;
     if (nums.size() > 50000) //if the input size is too large for the algo
     {
         std::cout << "The input was too big for selection sort.";
@@ -24,9 +24,9 @@ int halfSelectionSort (std::vector<int>& nums, int& duration) //func declr
     {
         for (auto i = nums.begin(); i != nums.end(); ++i) 
         {
-            auto min = i; //initialize index of the min element to curr iteration index i
+            auto minimum = i; //initialize index of the min element to curr iteration index i
 
-            if (count == (nums.size()/2) + (nums.size()%2))
+            if (counter == (nums.size()/2) + (nums.size()%2))
             {
                 break;
             }
@@ -34,20 +34,20 @@ int halfSelectionSort (std::vector<int>& nums, int& duration) //func declr
 
             for (auto j = i + 1; j != nums.end(); ++j) //iterate thru unsorted portion to find the minimum element remember i is till midpoint, j is from midpoint till end
             {
-                if (*j < *min) //if ur current element is smaller than element at min_index, 
+                if (*j < *minimum) //if ur current element is smaller than element at min_index, 
                 {
-                    min = j; //thats ur new min
+                    minimum = j; //thats ur new min
                 }
             }
 
-            std::swap(*i, *min); //swap curr element w/ the min element from unsorted portion
-            count++;
+            std::swap(*i, *minimum); //swap curr element w/ the min element from unsorted portion
+            counter++;
         }
     }
 
-    auto end_time = std::chrono::high_resolution_clock::now(); //end time of algo
+    auto end = std::chrono::high_resolution_clock::now(); //end time of algo
 
-    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time).count(); //duration of the algo
+    duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count(); //duration of the algo
 
     //PREVIOUS VERSION
     // const int size = nums.size(); //size of input vector
